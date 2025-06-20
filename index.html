@@ -85,25 +85,24 @@
       &copy; 2025 - Ucapan tulus dari hati yang mencintaimu.
     </div>
   </div>
-   <!-- Audio Autoplay (mungkin tidak bekerja di beberapa browser) -->
-    <audio autoplay loop>
-        <source src="/music/music.mp3" type="audio/mpeg">
-    </audio>
+   <button id="auto-play-btn" style="opacity: 0; position: absolute;">Play</button>
+<audio id="bgMusic" loop>
+  <source src="music/music.mp3" type="audio/mpeg">
+</audio>
 
-    <!-- Alternatif: Tombol Trigger Manual -->
-    <button onclick="playAudio()">Putar Musik</button>
-
-    <script>
-        function playAudio() {
-            const audio = new Audio('/music/music.mp3');
-            audio.loop = true;
-            audio.play().catch(e => alert("Izinkan audio untuk diputar."));
-        }
-        
-        // Coba autoplay setelah halaman dimuat (mungkin tetap diblokir)
-        window.onload = function() {
-            document.querySelector('audio').play().catch(e => console.log(e));
-        };
-    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('auto-play-btn');
+    const audio = document.getElementById('bgMusic');
+    
+    // Klik otomatis (bisa di-blokir browser)
+    btn.click();
+    
+    // Coba play audio setelah klik
+    btn.addEventListener('click', () => {
+      audio.play().catch(e => console.log("Autoplay diblokir:", e));
+    });
+  });
+</script>
 </body>
 </html>
