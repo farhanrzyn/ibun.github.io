@@ -81,10 +81,26 @@
       </p>
     </div>
 
-<audio autoplay loop hidden>
+<audio id="bgm" autoplay loop>
   <source src="music/music.mp3" type="audio/mpeg">
-  Browser Anda tidak mendukung pemutar audio.
 </audio>
+
+<script>
+  // Coba autoplay manual dengan JS (beberapa browser butuh cara ini)
+  const bgm = document.getElementById('bgm');
+  bgm.play().catch(() => {
+    // Jika autoplay gagal, tunjukkan tombol
+    const btn = document.createElement("button");
+    btn.innerText = "🔊 Putar Musik";
+    btn.style = "padding:10px 20px; font-size:16px; margin-top:20px;";
+    btn.onclick = () => {
+      bgm.play();
+      btn.remove();
+    };
+    document.body.appendChild(btn);
+  });
+</script>
+
 
 
 </body>
