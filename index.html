@@ -84,27 +84,26 @@
 
 
 
-   <audio id="bgm" autoplay loop>
+  <audio id="bgm" autoplay loop>
   <source src="music/music.mp3" type="audio/mpeg">
-  Browser Anda tidak mendukung pemutar audio.
 </audio>
 
 <script>
-  window.addEventListener('load', () => {
-    const audio = document.getElementById('bgm');
-    const playPromise = audio.play();
-
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          console.log("Autoplay berhasil");
-        })
-        .catch((error) => {
-          console.warn("Autoplay diblokir oleh browser:", error);
-        });
-    }
+  // Coba autoplay manual dengan JS (beberapa browser butuh cara ini)
+  const bgm = document.getElementById('bgm');
+  bgm.play().catch(() => {
+    // Jika autoplay gagal, tunjukkan tombol
+    const btn = document.createElement("button");
+    btn.innerText = "PLAY MUSIC";
+    btn.style = "padding:10px 20px; font-size:16px; margin-top:20px;";
+    btn.onclick = () => {
+      bgm.play();
+      btn.remove();
+    };
+    document.body.appendChild(btn);
   });
 </script>
+
 
 
 
