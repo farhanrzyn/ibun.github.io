@@ -85,29 +85,11 @@
       &copy; 2025 - Ucapan tulus dari hati yang mencintaimu.
     </div>
   </div>
-  <div id="player"></div>
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-  let player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '0',
-      width: '0',
-      videoId: 'tBbdSzwxqyY',
-      playerVars: {
-        autoplay: 1,
-        mute: 1,
-        loop: 1
-      },
-      events: {
-        'onReady': onPlayerReady
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
-</script>
+  <div class="music-player" style="display: none;">
+  <iframe width="0" height="0"
+    src="https://www.youtube.com/embed/tBbdSzwxqyY?autoplay=1&loop=1&playlist=tBbdSzwxqyY"
+    frameborder="0" allow="autoplay">
+  </iframe>
+  </div>
 </body>
 </html>
